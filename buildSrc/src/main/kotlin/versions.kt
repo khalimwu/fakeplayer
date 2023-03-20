@@ -14,7 +14,7 @@ const val configurateVersion = "4.2.0-SNAPSHOT"
 const val velocityVersion = "3.1.1"
 
 // renovate: datasource=maven dep=io.papermc.paper:paper-api
-const val paperApiVersion = "1.18.2-R0.1-SNAPSHOT"
+const val paperApiVersion = "1.19.3-R0.1-SNAPSHOT"
 
 // renovate: datasource=maven dep=tr.com.infumia:reflection
 const val reflectionVersion = "0.1.6"

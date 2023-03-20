@@ -3,7 +3,7 @@ package io.github.portlek.fakeplayer;
 import io.github.portlek.fakeplayer.api.AiBackend;
 import io.github.portlek.fakeplayer.api.AiPlayerCoordinator;
 import io.github.portlek.fakeplayer.api.FakePlayerConfig;
-import io.github.portlek.fakeplayer.nms.v1_18_R2.Backend1_18_R2;
+import io.github.portlek.fakeplayer.nms.v1_19_R2.Backend1_19_R2;
 import java.util.Objects;
 import lombok.AccessLevel;
 import lombok.SneakyThrows;
@@ -15,7 +15,7 @@ import tr.com.infumia.versionmatched.VersionMatched;
 public final class FakePlayerPlugin extends JavaPlugin {
 
   AiBackend backend = new VersionMatched<>(
-    Backend1_18_R2.class
+    Backend1_19_R2.class
   )
     .of()
     .create()
