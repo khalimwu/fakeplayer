@@ -47,11 +47,11 @@ public final class FakePlayerCommand implements TabExecutor {
           return true;
         }
         final var count = Integer.parseInt(args[1]);
-        Location location = new Location(Bukkit.getServer().getWorld("world"), Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]),0,0);
+        Location location = new Location(Bukkit.getServer().getWorld("world"), Float.parseFloat(args[2]), Float.parseFloat(args[3]), Float.parseFloat(args[4]),0,0);
         for (var index = 0; index < count; index++) {
           UUID uuid = UUID.randomUUID();
           String name = uuid.toString().substring(0, 7);
-          Bukkit.getLogger().info(String.format("Creating player with UUID %s", uuid));
+          Bukkit.getLogger().info(String.format("Creating player with UUID %s %1.2f %1.2f %1.2f", uuid,location.getX(), location.getY(), location.getZ()));
           AiPlayer.create(name, uuid, location).connect();
         }
       }

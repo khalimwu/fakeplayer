@@ -7,6 +7,8 @@ dependencies {
   implementation(configurateJacksonLibrary)
 
   compileOnly(paperApiLibrary)
+  // https://mvnrepository.com/artifact/com.nukkitx/math
+  implementation("com.nukkitx:math:1.1.1")
 }
 
 tasks {
