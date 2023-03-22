@@ -9,7 +9,7 @@ fun Project.getQualifiedProjectName(): String {
   }
   val parentName = parent!!.getQualifiedProjectName()
     .replace("Nms", "")
-  return parentName + name[0].toUpperCase() + name.substring(1)
+  return parentName + name[0].uppercaseChar() + name.substring(1)
 }
 
 fun AbstractArchiveTask.define(

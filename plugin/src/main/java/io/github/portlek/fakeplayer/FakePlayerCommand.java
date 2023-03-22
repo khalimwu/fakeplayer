@@ -41,19 +41,17 @@ public final class FakePlayerCommand implements TabExecutor {
         });
       }
       case "create" -> {
-        if (args.length < 4)
+        if (args.length < 1)
         {
-          Bukkit.getLogger().info("&aNeed 4 args for this \"<Amount> <X> <Y> <Z> \"");
+          Bukkit.getLogger().info("&aNeed 1 arg for this \"<Name>\"");
           return true;
         }
-        final var count = Integer.parseInt(args[1]);
-        Location location = new Location(Bukkit.getServer().getWorld("world"), Float.parseFloat(args[2]), Float.parseFloat(args[3]), Float.parseFloat(args[4]),0,0);
-        for (var index = 0; index < count; index++) {
-          UUID uuid = UUID.randomUUID();
-          String name = uuid.toString().substring(0, 7);
-          Bukkit.getLogger().info(String.format("Creating player with UUID %s %1.2f %1.2f %1.2f", uuid,location.getX(), location.getY(), location.getZ()));
-          AiPlayer.create(name, uuid, location).connect();
-        }
+        Location location = new Location(Bukkit.getServer().getWorld("world"), 0, 0, 0,0,0);
+        UUID uuid = UUID.randomUUID();
+        String name = args[1];
+        Bukkit.getLogger().info(String.format("Creating player %s with UUID %s", name, uuid));
+        AiPlayer newPlayer = AiPlayer.create(name, uuid, location);
+        newPlayer.connect();
       }
       default -> {
         Bukkit.getLogger().info("Unprocessed. Ignoring command");

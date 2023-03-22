@@ -1,6 +1,6 @@
 dependencies {
   implementation(project(":api"))
-  implementation(project(":nms:v1_19_R2"))
+  implementation(project(":nms:v1_19_R3"))
 
   implementation(reflectionLibrary)
   implementation(versionmatchedLibrary)
