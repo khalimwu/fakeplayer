@@ -43,7 +43,7 @@ final class AiPlayerNms implements AiPlayer {
       }
       @Override
       public void disconnected(final DisconnectedEvent event) {
-        System.out.println("Disconnected: " + event.getReason());
+        Bukkit.getLogger().info("Disconnected: " + event.getReason());
         if (event.getCause() != null) {
           event.getCause().printStackTrace();
         }
