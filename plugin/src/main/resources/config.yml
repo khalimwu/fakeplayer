@@ -1,2 +1,4 @@
 spawnAtStart:
-  - WitchAFK
+  - id : 1
+    name : WitchAFK
+    UUID : random

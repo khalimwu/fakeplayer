@@ -5,7 +5,9 @@ import io.github.portlek.fakeplayer.api.AiPlayer;
 import io.github.portlek.fakeplayer.api.AiPlayerCoordinator;
 import io.github.portlek.fakeplayer.api.FakePlayerConfig;
 import io.github.portlek.fakeplayer.nms.v1_19_R3.Backend1_19_R3;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 import lombok.AccessLevel;
@@ -45,13 +47,22 @@ public final class FakePlayerPlugin extends JavaPlugin {
       .setExecutor(new FakePlayerCommand(this));
 
     FileConfiguration config = getConfig();
-    List<String> spawnsAtStart = (List<String>) config.get("spawnAtStart");
+    List<Map<?, ?>> spawnsAtStart = config.getMapList("spawnAtStart");
 
-    for (String name : spawnsAtStart)
+    for (Map<?, ?> spawnStruct : spawnsAtStart)
     {
       Location location = new Location(Bukkit.getServer().getWorld("world"), 0, 0, 0,0,0);
-      UUID uuid = UUID.randomUUID();
-      Bukkit.getLogger().info(String.format("Creating player %s with UUID %s", name, uuid));
+      String name = spawnStruct.get("name").toString();
+      UUID uuid;
+      if (spawnStruct.get("UUID").toString().equalsIgnoreCase("random")) {
+        uuid = UUID.randomUUID();
+        Bukkit.getLogger().info(String.format("Creating player %s with random UUID %s", name, uuid));
+      }
+      else {
+        uuid = UUID.fromString(spawnStruct.get("UUID").toString());
+        Bukkit.getLogger().info(String.format("Creating player %s with specified UUID %s", name, uuid));
+      }
+      
       AiPlayer newPlayer = AiPlayer.create(name, uuid, location);
       newPlayer.connect();
     }
