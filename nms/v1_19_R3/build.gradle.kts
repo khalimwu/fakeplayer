@@ -5,7 +5,7 @@ plugins {
 dependencies {
   paperDevBundle("1.19.3-R0.1-SNAPSHOT")
 
-  implementation(files("C:/Bamtang/mcserver/fakeplayer/libs/mcprotocollib-1.19.3-SNAPSHOT.jar"))
+  implementation(files("..\\..\\libs\\mcprotocollib-1.19.3-SNAPSHOT.jar"))
   implementation("com.github.GeyserMC:opennbt:1.4")
   implementation("com.github.GeyserMC:mcauthlib:6f3d6aada5")
 
