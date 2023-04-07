@@ -47,11 +47,12 @@ public final class FakePlayerPlugin extends JavaPlugin {
       .setExecutor(new FakePlayerCommand(this));
 
     FileConfiguration config = getConfig();
-    List<Map<?, ?>> spawnsAtStart = config.getMapList("spawnAtStart");
+    List<Map<?, ?>> spawnsAtStart = config.getMapList("spawnAtStart.afkers");
 
     for (Map<?, ?> spawnStruct : spawnsAtStart)
     {
-      Location location = new Location(Bukkit.getServer().getWorld("world"), 0, 0, 0,0,0);
+      String world = spawnStruct.get("world").toString();
+      Location location = new Location(Bukkit.getServer().getWorld(world), 0, 0, 0,0,0);
       String name = spawnStruct.get("name").toString();
       UUID uuid;
       if (spawnStruct.get("UUID").toString().equalsIgnoreCase("random")) {

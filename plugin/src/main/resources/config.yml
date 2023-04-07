@@ -1,4 +1,6 @@
 spawnAtStart:
-- id : 1
-  name : WitchAFK
-  UUID : 55a53384-b038-4603-b46d-452928b8a077
+  afkers :
+  - id : 1
+    name : WitchAFK
+    UUID : 55a53384-b038-4603-b46d-452928b8a077
+    world : world

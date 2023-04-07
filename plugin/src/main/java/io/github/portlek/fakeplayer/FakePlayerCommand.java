@@ -3,6 +3,7 @@ package io.github.portlek.fakeplayer;
 import io.github.portlek.fakeplayer.api.AiPlayer;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,7 @@ import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.jetbrains.annotations.NotNull;
 
 @RequiredArgsConstructor
@@ -41,12 +43,15 @@ public final class FakePlayerCommand implements TabExecutor {
         });
       }
       case "create" -> {
-        if (args.length < 1)
+        if (args.length < 2)
         {
-          Bukkit.getLogger().info("&aNeed 1 arg for this \"<Name>\"");
+          Bukkit.getLogger().info("&aNeed 2 arg for this \"<Name>\" \"<World>\"");
           return true;
         }
-        Location location = new Location(Bukkit.getServer().getWorld("world"), 0, 0, 0,0,0);
+
+        String worldName = args[2];
+
+        Location location = new Location(Bukkit.getServer().getWorld(worldName), 0, 0, 0,0,0);
         UUID uuid = UUID.randomUUID();
         String name = args[1];
         Bukkit.getLogger().info(String.format("Creating player %s with UUID %s", name, uuid));
