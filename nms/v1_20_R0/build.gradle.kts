@@ -1,11 +1,11 @@
 plugins {
-  id("io.papermc.paperweight.userdev") version "1.5.3"
+  id("io.papermc.paperweight.userdev") version "1.5.4"
 }
 
 dependencies {
-  paperDevBundle("1.19.3-R0.1-SNAPSHOT")
+  paperDevBundle("1.20-R0.1-SNAPSHOT")
 
-  implementation(files("..\\..\\libs\\mcprotocollib-1.19.3-SNAPSHOT.jar"))
+  implementation(files("..\\..\\libs\\mcprotocollib-1.20-1.jar"))
   implementation("com.github.GeyserMC:opennbt:1.4")
   implementation("com.github.GeyserMC:mcauthlib:6f3d6aada5")
 
