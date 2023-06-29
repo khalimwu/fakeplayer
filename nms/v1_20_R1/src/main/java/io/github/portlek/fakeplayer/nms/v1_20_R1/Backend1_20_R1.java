@@ -1,10 +1,10 @@
-package io.github.portlek.fakeplayer.nms.v1_18_R2;
+package io.github.portlek.fakeplayer.nms.v1_20_R1;
 
 import io.github.portlek.fakeplayer.api.AiBackend;
 import io.github.portlek.fakeplayer.api.AiPlayer;
 import org.jetbrains.annotations.NotNull;
 
-public final class Backend1_18_R2 implements AiBackend {
+public final class Backend1_20_R1 implements AiBackend {
 
   @NotNull
   @Override

@@ -7,11 +7,12 @@ import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 @RequiredArgsConstructor
@@ -27,8 +28,8 @@ public final class FakePlayerCommand implements TabExecutor {
     @NotNull final String label,
     @NotNull final String[] args
   ) {
-    if (!(sender instanceof Player player) || args.length == 0) {
-      System.out.println("x");
+    if (args.length == 0) {
+      Bukkit.getLogger().info("No args, ignoring command");
       return true;
     }
     switch (args[0]) {
@@ -36,14 +37,24 @@ public final class FakePlayerCommand implements TabExecutor {
         Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
           this.plugin.reloadFiles();
           // @todo #1:5m Make '&aReload complete.' customizable.
-          sender.sendMessage("&aReload complete.");
+          Bukkit.getLogger().info("&aReload complete.");
         });
       }
       case "create" -> {
-        final var count = Integer.parseInt(args[1]);
-        for (var index = 0; index < count; index++) {
-          AiPlayer.create(UUID.randomUUID().toString().substring(0, 7), player.getLocation()).connect();
+        if (args.length < 1)
+        {
+          Bukkit.getLogger().info("&aNeed 1 arg for this \"<Name>\"");
+          return true;
         }
+        Location location = new Location(Bukkit.getServer().getWorld("world"), 0, 0, 0,0,0);
+        UUID uuid = UUID.randomUUID();
+        String name = args[1];
+        Bukkit.getLogger().info(String.format("Creating player %s with UUID %s", name, uuid));
+        AiPlayer newPlayer = AiPlayer.create(name, uuid, location);
+        newPlayer.connect();
+      }
+      default -> {
+        Bukkit.getLogger().info("Unprocessed. Ignoring command");
       }
     }
     return true;
