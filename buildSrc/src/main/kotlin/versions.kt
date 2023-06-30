@@ -8,7 +8,7 @@ const val annotationsVersion = "24.0.1"
 const val jacksonDatabindVersion = "2.15.2"
 
 // renovate: datasource=maven dep=org.spongepowered:configurate-gson
-const val configurateVersion = "4.2.0-SNAPSHOT"
+const val configurateVersion = "4.1.2"
 
 // renovate: datasource=maven dep=com.velocitypowered:velocity-api
 const val velocityVersion = "3.1.1"
