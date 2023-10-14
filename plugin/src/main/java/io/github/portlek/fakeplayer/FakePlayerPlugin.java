@@ -38,14 +38,7 @@ public final class FakePlayerPlugin extends JavaPlugin {
   public void onDisable() {
   }
 
-  @Override
-  public void onEnable() {
-    saveDefaultConfig();
-
-    AiPlayerCoordinator.backend(this.backend);
-    Objects.requireNonNull(this.getCommand("fakeplayer"), "fakeplayer")
-      .setExecutor(new FakePlayerCommand(this));
-
+  public void spawnAtStart() {
     FileConfiguration config = getConfig();
     List<Map<?, ?>> spawnsAtStart = config.getMapList("spawnAtStart");
 
@@ -62,10 +55,21 @@ public final class FakePlayerPlugin extends JavaPlugin {
         uuid = UUID.fromString(spawnStruct.get("UUID").toString());
         Bukkit.getLogger().info(String.format("Creating player %s with specified UUID %s", name, uuid));
       }
-      
+
       AiPlayer newPlayer = AiPlayer.create(name, uuid, location);
       newPlayer.connect();
     }
+  }
+
+  @Override
+  public void onEnable() {
+    saveDefaultConfig();
+
+    AiPlayerCoordinator.backend(this.backend);
+    Objects.requireNonNull(this.getCommand("fakeplayer"), "fakeplayer")
+      .setExecutor(new FakePlayerCommand(this));
+
+    Bukkit.getScheduler().runTaskLater(this, () -> spawnAtStart(), 20);
   }
 
   @SneakyThrows

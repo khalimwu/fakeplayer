@@ -40,14 +40,28 @@ public final class FakePlayerCommand implements TabExecutor {
           Bukkit.getLogger().info("&aReload complete.");
         });
       }
+      case "start" -> {
+        Bukkit.getLogger().info(String.format("Spawning players from spawnAtStart logic"));
+        this.plugin.spawnAtStart();
+      }
       case "create" -> {
-        if (args.length < 1)
+        if (args.length < 2)
         {
-          Bukkit.getLogger().info("&aNeed 1 arg for this \"<Name>\"");
+          Bukkit.getLogger().info("&aUsage is /fp create <name> <uuid> (uuid is optional) \"<Name>\"");
           return true;
         }
         Location location = new Location(Bukkit.getServer().getWorld("world"), 0, 0, 0,0,0);
-        UUID uuid = UUID.randomUUID();
+        UUID uuid;
+
+        if (args.length > 2)
+        {
+          uuid = UUID.fromString(args[2]);
+        }
+        else
+        {
+         uuid = UUID.randomUUID();
+        }
+
         String name = args[1];
         Bukkit.getLogger().info(String.format("Creating player %s with UUID %s", name, uuid));
         AiPlayer newPlayer = AiPlayer.create(name, uuid, location);
