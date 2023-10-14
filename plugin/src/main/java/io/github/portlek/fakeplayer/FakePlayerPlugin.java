@@ -4,7 +4,7 @@ import io.github.portlek.fakeplayer.api.AiBackend;
 import io.github.portlek.fakeplayer.api.AiPlayer;
 import io.github.portlek.fakeplayer.api.AiPlayerCoordinator;
 import io.github.portlek.fakeplayer.api.FakePlayerConfig;
-import io.github.portlek.fakeplayer.nms.v1_20_R1.Backend1_20_R1;
+import io.github.portlek.fakeplayer.nms.v1_20_R2.Backend1_20_R2;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +23,7 @@ import tr.com.infumia.versionmatched.VersionMatched;
 public final class FakePlayerPlugin extends JavaPlugin {
 
   AiBackend backend = new VersionMatched<>(
-    Backend1_20_R1.class
+    Backend1_20_R2.class
   )
     .of()
     .create()

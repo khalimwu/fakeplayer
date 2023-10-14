@@ -1,4 +1,4 @@
-package io.github.portlek.fakeplayer.nms.v1_20_R1;
+package io.github.portlek.fakeplayer.nms.v1_20_R2;
 
 import com.github.steveice10.mc.auth.service.SessionService;
 import com.github.steveice10.mc.protocol.MinecraftConstants;

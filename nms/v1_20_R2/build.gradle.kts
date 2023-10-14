@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-  paperDevBundle("1.20.1-R0.1-SNAPSHOT")
+  paperDevBundle("1.20.2-R0.1-SNAPSHOT")
 
   implementation(files("..\\..\\libs\\mcprotocollib-1.20-1.jar"))
   implementation("org.cloudburstmc.math:immutable:2.0")
