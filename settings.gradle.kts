@@ -11,6 +11,6 @@ rootProject.name = "FakePlayer"
 include("api")
 
 include("nms")
-include("nms:v1_20_R2")
+include("nms:v1_20_R3")
 
 include("plugin")
